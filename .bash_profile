@@ -1,13 +1,19 @@
+#export PS1="blai$ "
+#export PS1="\u$ "
 # Enable tab completion
+source ~/git-completion.bash
 
-# Prompt
-BGREEN='\[\033[1;32m\]'
-GREEN='\[\033[0;32m\]'
-BRED='\[\033[1;31m\]'
-RED='\[\033[0;31m\]'
-BBLUE='\[\033[1;34m\]'
-BLUE='\[\033[0;34m\]'
-NORMAL='\[\033[00m\]'
+# colors!
+green="\[\033[0;32m\]"
+blue="\[\033[0;34m\]"
+purple="\[\033[0;35m\]"
+reset="\[\033[0m\]"
 
-PS1="${BLUE}(${RED}\w${BLUE}) ${NORMAL}\h ${RED}\$ ${NORMAL}"
-export PS1
+# Change command prompt
+source ~/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+# '\u' adds the name of the current user to the prompt
+# '\$(__git_ps1)' adds git-related stuff
+# '\W' adds the name of the current directory
+export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+source ~/.bashrc
